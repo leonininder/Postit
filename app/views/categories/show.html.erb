@@ -1,0 +1,14 @@
+<%= render "shared/top_header", header_title: "#{@category.name}" %>
+
+<% @posts.each do |post| %>
+  <div class="well">
+    <h4>
+      <%= post.title %>
+    </h4>
+    <%= render "shared/badges", name: post %>
+    <p>
+      <%= link_to("Read more", post_path(post)) %>
+    </p>
+  </div>
+<% end %>
+<%= render 'shared/return_nav' %>

@@ -1,0 +1,9 @@
+<%= render "shared/top_header", header_title: "List of avaiable categories" %>
+
+<ul>
+  <% @categories.each do |category|  %>
+    <li>
+      <%= category.name %>
+    </li>
+  <% end %>
+</ul>

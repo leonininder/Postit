@@ -1,0 +1,18 @@
+<%= render "shared/top_header", header_title: "All Posts" %>
+<% @posts.each do |post| %>
+  <div class="well">
+    <h4>
+      <%= post.title %>
+    </h4>
+    <p>
+      <em>
+        <small><%= set_time(post.created_at) %></small>
+      </em>
+    </p>
+    <%= render "shared/badges", name: post %>
+    <p>
+      <%= link_to("Read more", post_path(post)) %>
+    </p>
+  </div>
+<% end %>
+

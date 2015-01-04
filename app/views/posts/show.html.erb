@@ -1,0 +1,39 @@
+<%= render "shared/top_header", header_title: "#{@post.title}" %>
+<p>
+  <strong>website:</strong> <%= url_fix(@post.url) %>
+</p>
+
+<p>
+  <%= @post.description %>  
+</p>
+<p>
+  <em>
+    <small>Posted on: <%= set_time(@post.created_at) %></small>
+  </em>
+</p>
+
+<%= render 'shared/errors', name: @comment %>
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :body, "Add new Comment" %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit "Submit Comment" %>
+<% end %>
+
+<div class="row">
+  <h5>Comments</h5>
+
+  <% @post.comments.each do |comment| %>
+    <div class="well span8">
+      <em>
+        "<%= comment.body %>"
+      </em>
+      <p>
+        <em>
+          <small>Posted on: <%= set_time(comment.created_at) %></small>
+        </em>
+      </p>
+    </div>
+  <% end %>
+</div>
+<%= render 'shared/return_nav' %>
